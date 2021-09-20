@@ -64,7 +64,23 @@ dependencias. Ver el fichero pom.xml para ver más detalles de donfiguración.
 
 5) Si cambiamos la jdk de java, tenemos que hacer un maven -> update proyect
 	
-	
+## Spring
+
+Un framework java (super framework). Basicamente es un framework que trabaja con 
+POJOs (Plain old java objet). Son objetos sencillos que siguen el convenio 
+Javabean, es decir no tienen porque tener herencias, interfaces, etc.
+
+En spring hay dos conceptos claves, 
+
+1. IoC, Inversion de control -> Este principio nos dice que el programador no tiene el control total sobre el ciclo de vida de los objetos. Podemos crear aplicaciones java sin necesidad de hacer "news". Los programadores se van a encargar de programar los objetos y decir al contexto de spring cual sería su ciclo de vida.
+
+2. ID, inyeccion de dependencias -> Los objetos en una aplicación no suelen trabajar solos, sino que dependen de otros objetos para realizar una funcion. Mediante Spring podemos inyectar objetos a otros objetos de manera automatica y sencilla.
+
+Por otra parte, en Spring podemos trabajar tanto con ficheros XML como con anotaciones para dar de alta todos los objetos y hacer sus dependencias. Aunque se pueden utilizar las dos, es cierto que con anotaciones es mas estandar.
+
+Es recomendable cuando trabajamos con spring en eclipse utilizar algun plugin que nos ayude a configurar las aplicaciones de manera mas comoda. Help -> Eclipse Marketplace -> buscar por la palabra Spring y bajarnos el plugin Spring tools 4.12g
+
+En este ejemplo vamos a utilizar Spring mediante fichero XML, que tenemos que crear en src/main/resources	
 Bibliografia
 -
 https://maven.apache.org/

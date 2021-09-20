@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		Dentro del contexto de Spring podemos dar de alta todos los objetos que 
+		necesitemos. En principio si no decimos nada su alcance o ciclo de vida
+		del objeto sera singleton
+		
+		Si queremos crear objetos directamente la clase tiene que tener
+		obligatoriamente el constructor por defecto o constructor vacio
+		
+		Para dar de alta objetos debemos de usar la etiquete "bean" y al menos
+		hay que dar valores a dos atributos de la etiqueta
+		1- id -> esto es lo que hace que podamos identificar el objeto dentro
+		de nuestro contexto de spring. Es lo que hace que los objetos dejen
+		de ser anonimos.
+		
+		2- class -> hay que decirle a spring la clase que servira de molde para
+		crear nuestro objeto
+	 -->
+	 <bean id="tony" class="es.curso.modelo.entidad.Persona"></bean>
+	 
+	 <!-- Podemos dar de alta objetos con valores en sus atributos, pero ojo!
+	 para poder dar valores a atributos tienen que ser Javabeans, es decir,
+	 tienen que tener getters y setters 
+	 Para ello podemos usar dentro de la etiqueta bean, podemos usar la 
+	 etiqueta properties
+	 -->
+	 <bean id="steve" 
+	 	class="es.curso.modelo.entidad.Persona" 
+	 	scope="singleton">
+	 	<property name="id" value="2"></property>
+	 	<property name="nombre" value="Steve Rogers"></property>
+	 	<property name="edad" value="40"></property>
+	 </bean>
+</beans>
