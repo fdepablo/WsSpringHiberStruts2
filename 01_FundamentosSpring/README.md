@@ -61,6 +61,8 @@ Entre las carpetas y paquetes más importantes encontraermos:
 4) Una vez configurado el fichero pom.xml, podemos empezar a realizar nuestro proyecto, normalmente
 en src/main/java. Para este ejemplo hemos usado la libreria de pdf que hemos añadido a nuestras
 dependencias. Ver el fichero pom.xml para ver más detalles de donfiguración.
+
+5) Si cambiamos la jdk de java, tenemos que hacer un maven -> update proyect
 	
 	
 Bibliografia
