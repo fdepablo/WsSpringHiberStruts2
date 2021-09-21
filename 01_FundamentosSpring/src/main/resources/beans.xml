@@ -65,4 +65,93 @@
 	  </bean>
 	  
 	  <bean id="listaPersonas" class="java.util.LinkedList"></bean>
+	  
+	  <!-- Podemos tambien crear objetos mediante constructores especificos en 
+	  ven de con el constructor por defecto -->
+	  <bean id="personaConstructor" class="es.curso.modelo.entidad.Persona">
+	  	<constructor-arg value="3"></constructor-arg>
+	  	<constructor-arg value="Mortadelo"></constructor-arg>
+	  	<constructor-arg value="50"></constructor-arg>
+	  </bean>
+	  
+	  <!-- Existe otra manera de inyectar objetos sin que necesidad de que dichos
+	  objetos esten ya creados en el contexto de spring. Se conoce como inyeccion
+	  mediante "inner bean" -->
+	  <bean id="peliculaInnerBean" class="es.curso.modelo.entidad.Pelicula">
+	  	<property name="id" value="2"></property>
+	  	<property name="titulo" value="La guerra de las galaxias"></property>
+	  	<property name="genero" value="Sci-fi"></property>
+	  	<property name="director">
+	  		<bean class="es.curso.modelo.entidad.Director">
+	  			<property name="nombre" value="George Lucas"></property>
+	  			<property name="edad" value="55"></property>
+	  		</bean>
+	  	</property>
+	  </bean>
+	  
+	  <!-- Tambien podemos trabajar con listas y mapas e inicializarlas -->
+	  <!-- 
+	  	Creamos una lista y la inicializamos de personas 
+	  	Con value-Type decimos el tipo de dato que vamos a guardar en la lista
+	  	Dentro de la etiqueta list podemos dar de alta los diferentes objetos
+	  	de dos maneras principalemnte, la primera sería mediante inner bean
+	  	y la segunda mediante un bean referenciado
+	  -->
+	  <bean id="listaPersonas2" class="java.util.ArrayList">
+	  	<constructor-arg>
+	  		<list value-type="es.curso.modelo.entidad.Persona">
+	  			<ref bean="persona"/>
+	  			<ref bean="persona"/>
+	  			<ref bean="persona"/>
+	  			<bean class="es.curso.modelo.entidad.Persona">
+	  				<property name="id" value="4"></property>
+	  				<property name="nombre" value="Asterix"></property>
+	  				<property name="edad" value="35"></property>
+	  			</bean>
+	  		</list>
+	  	</constructor-arg>
+	  </bean>
+	  
+	  <bean id="mapaPersonas" class="java.util.HashMap">
+	  	<constructor-arg>
+	  		<map key-type="java.lang.String" value-type="es.curso.modelo.entidad.Persona">
+	  			<entry key="Obelix" value-ref="persona"></entry>
+	  			<entry key="Panoramix">
+	  				<bean class="es.curso.modelo.entidad.Persona">
+	  					<constructor-arg value="5"></constructor-arg>
+	  					<constructor-arg value="Panoramix"></constructor-arg>
+	  					<constructor-arg value="89"></constructor-arg>
+	  				</bean>
+	  			</entry>
+	  		</map>
+	  	</constructor-arg>
+	  </bean>
+	  
+	  <!-- 
+	  	Autowired: Es una manera de inyectar dependencias de objetos automaticamente
+	  	Es decir, que el propio contexto de spring busque las dependecias de un objeto
+	  	de manera automatica
+	  	
+	  	Autowired byType -> El contexto de Spring va a buscar objetos dentro del contexto
+	  	que puedan ser inyectados coincidiendo por el tipo
+	  	
+	  	Autowired byName -> El contexto de Spring va a buscar objetos dentro del contexto
+	  	que puedan ser inyectados y que el nombre del bean coincida con el nombre de la 
+	  	propiedad
+	   -->
+	   
+	   <bean id="direccion" class="es.curso.modelo.entidad.Direccion">
+	   	<property name="tipoVia" value="Calle"></property>
+	   	<property name="nombreVia" value="Gran Via"></property>
+	   </bean>
+	   
+	   <!--  
+	   <bean id="otraDireccion" class="es.curso.modelo.entidad.Direccion">
+	   	<property name="tipoVia" value="Avenida"></property>
+	   	<property name="nombreVia" value="La Gavia"></property>
+	   </bean>	   
+  		-->
+	   <bean id="empleado" class="es.curso.modelo.entidad.Empleado" autowire="byType">
+	   	<property name="dni" value="52987654P"></property>
+	   </bean>
 </beans>

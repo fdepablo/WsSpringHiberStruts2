@@ -3,12 +3,14 @@ package es.curso;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import es.curso.modelo.entidad.Coche;
 import es.curso.modelo.entidad.Director;
+import es.curso.modelo.entidad.Empleado;
 import es.curso.modelo.entidad.Pelicula;
 import es.curso.modelo.entidad.Persona;
 
@@ -78,6 +80,25 @@ public class MainSpring1 {
 		List<Persona> listaPersonas = 
 				context.getBean("listaPersonas",List.class);
 		System.out.println(listaPersonas);
+		
+		Persona p10 = context.getBean("personaConstructor",Persona.class);
+		System.out.println(p10);
+		
+		Pelicula peliculaInner = context.getBean("peliculaInnerBean", Pelicula.class);
+		System.out.println(peliculaInner);
+		
+		List<Persona> listaPersonas2 = context.getBean("listaPersonas2",List.class);
+		System.out.println(listaPersonas2);
+		listaPersonas2.get(1).setNombre("Filemon");
+		System.out.println(listaPersonas2);
+		
+		Map<String, Persona> mapaPersonas = context.getBean("mapaPersonas",Map.class);
+		System.out.println(mapaPersonas.get("Obelix"));
+		System.out.println(mapaPersonas.get("Panoramix"));
+		System.out.println(mapaPersonas.get("Asterix"));
+		
+		Empleado empleado = context.getBean("empleado", Empleado.class);
+		System.out.println(empleado);
 	}
 	
 	public static void accederCochesBD() {
