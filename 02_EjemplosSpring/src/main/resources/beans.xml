@@ -3,5 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="modoImpresion" class="es.curso.ImprimirPantalla"></bean>
+	<bean id="modoImpresion" class="es.imprimir.ImprimirPantalla"></bean>
+	
+	<bean id="a1" class="es.juego.Arco">
+	</bean>
+	
+	<bean id="a2" class="es.juego.Espada">
+	</bean>
+	
+	<bean id="g1" class="es.juego.Guerrero">
+		<property name="nombre" value="Conan"></property>
+		<property name="arma" ref="a1"></property>
+	</bean>
+	
+	<bean id="g2" class="es.juego.Guerrero">
+		<property name="nombre" value="Legolas"></property>
+		<property name="arma" ref="a2"></property>
+	</bean>
 </beans>

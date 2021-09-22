@@ -87,10 +87,19 @@ public class MainSpring1 {
 		Pelicula peliculaInner = context.getBean("peliculaInnerBean", Pelicula.class);
 		System.out.println(peliculaInner);
 		
+		//En version 1.5 y anteriores de java las listas eran genericas
+		//ListlistaGenerica = new ArrayList();
+		List<Object> listaGenerica = new ArrayList<>();
+		listaGenerica.add(new Coche());
+		listaGenerica.add(new Persona());
+		listaGenerica.add("Esto es un string");
+		
 		List<Persona> listaPersonas2 = context.getBean("listaPersonas2",List.class);
 		System.out.println(listaPersonas2);
 		listaPersonas2.get(1).setNombre("Filemon");
 		System.out.println(listaPersonas2);
+		listaPersonas2.add(new Persona());
+		//listaPersonas2.add(new Coche());//error
 		
 		Map<String, Persona> mapaPersonas = context.getBean("mapaPersonas",Map.class);
 		System.out.println(mapaPersonas.get("Obelix"));

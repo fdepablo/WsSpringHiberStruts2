@@ -69,9 +69,9 @@
 	  <!-- Podemos tambien crear objetos mediante constructores especificos en 
 	  ven de con el constructor por defecto -->
 	  <bean id="personaConstructor" class="es.curso.modelo.entidad.Persona">
-	  	<constructor-arg value="3"></constructor-arg>
-	  	<constructor-arg value="Mortadelo"></constructor-arg>
-	  	<constructor-arg value="50"></constructor-arg>
+	  	<constructor-arg index="0" value="3"></constructor-arg>
+	  	<constructor-arg index="1" value="Mortadelo"></constructor-arg>
+	  	<constructor-arg index="2" value="50"></constructor-arg>
 	  </bean>
 	  
 	  <!-- Existe otra manera de inyectar objetos sin que necesidad de que dichos

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="director" 
+		class="es.curso.modelo.entidad.Director" 
+		scope="prototype">
+	</bean>
+	
+	<bean id="pelicula" 
+		class="es.curso.modelo.entidad.Pelicula"
+		scope="prototype"
+		autowire="byType">
+	</bean>
+	
+	<bean id="listaPeliculas" class="java.util.ArrayList"></bean>
+	
+	<!-- Los autowires de listas suelen dar problemas en spring -->
+	<bean id="daoPelicula" class="es.curso.modelo.persistencia.DaoPelicula">
+		<property name="listaPeliculas" ref="listaPeliculas"></property>
+		<property name="numeroMaximoPelicula" value="2"></property>
+	</bean>
+	
+	<bean id="gestorPelicula" 
+		class="es.curso.modelo.negocio.GestorPelicula"
+		autowire="byType"></bean>
+</beans>
