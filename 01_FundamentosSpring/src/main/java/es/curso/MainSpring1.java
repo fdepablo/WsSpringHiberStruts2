@@ -21,8 +21,8 @@ public class MainSpring1 {
 	public static void main(String[] args) {
 		System.out.println("Crear el contexto de spring");
 		context = 
-				new ClassPathXmlApplicationContext("beans.xml");
-		
+				new ClassPathXmlApplicationContext("beans.xml");		
+
 		Persona p1 = (Persona)context.getBean("tony");
 		p1.setEdad(34);
 		p1.setId(1);
