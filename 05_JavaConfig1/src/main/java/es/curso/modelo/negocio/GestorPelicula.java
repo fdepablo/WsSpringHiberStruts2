@@ -36,5 +36,6 @@ public class GestorPelicula {
 	
 	public List<Pelicula> listar(){
 		return daoPelicula.getListaPeliculas();
-	}	
+	}
+	
 }

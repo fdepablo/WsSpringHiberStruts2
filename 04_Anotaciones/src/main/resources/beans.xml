@@ -6,12 +6,39 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Si damos de alta dos objetos en spring, uno por anotaciones y otro por
-		xml, con el mismo id, los fusiona
+		xml, con el mismo id, los fusion
 	 -->
 	<bean id="director" class="es.curso.modelo.entidad.Director">
 		<property name="id" value="2"></property>
 		<property name="nombre" value="George lucas"></property>
 	</bean>
+	
+	<bean id="listaPeliculas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="es.curso.modelo.entidad.Pelicula">
+				<bean class="es.curso.modelo.entidad.Pelicula">
+					<property name="id" value="34"></property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="listaPe" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="es.curso.modelo.entidad.Pelicula">
+				<bean class="es.curso.modelo.entidad.Pelicula">
+					<property name="id" value="100"></property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="numeroMaximoPelicula" class="java.lang.Integer">
+		<constructor-arg>
+			<value>3</value>
+		</constructor-arg>
+	</bean>
+	
 	<!-- 
 		Para escanear paquetes con anotaciones Spring
 	-->

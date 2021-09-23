@@ -2,19 +2,11 @@ package es.curso.modelo.persistencia;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-
 import es.curso.modelo.entidad.Pelicula;
 
-@Repository
 public class DaoPelicula {
 
-	@Autowired
-	@Qualifier("listaPe")
 	private List<Pelicula> listaPeliculas;
-	@Autowired
 	private int numeroMaximoPelicula;
 	
 	//Esto seria un comentario javadoc
@@ -38,5 +30,16 @@ public class DaoPelicula {
 	
 	public List<Pelicula> getListaPeliculas() {
 		return listaPeliculas;
-	}	
+	}
+	public void setListaPeliculas(List<Pelicula> listaPeliculas) {
+		this.listaPeliculas = listaPeliculas;
+	}
+	public int getNumeroMaximoPelicula() {
+		return numeroMaximoPelicula;
+	}
+	public void setNumeroMaximoPelicula(int numeroMaximoPelicula) {
+		this.numeroMaximoPelicula = numeroMaximoPelicula;
+	}
+	
+	
 }

@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import es.curso.modelo.entidad.Pelicula;
 import es.curso.modelo.persistencia.DaoPelicula;
 
-@Service
 public class GestorPelicula {
 	
-	@Autowired
 	private DaoPelicula daoPelicula;
 	
 	/**
@@ -36,5 +34,13 @@ public class GestorPelicula {
 	
 	public List<Pelicula> listar(){
 		return daoPelicula.getListaPeliculas();
+	}
+
+	public DaoPelicula getDaoPelicula() {
+		return daoPelicula;
+	}
+
+	public void setDaoPelicula(DaoPelicula daoPelicula) {
+		this.daoPelicula = daoPelicula;
 	}	
 }

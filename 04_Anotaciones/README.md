@@ -13,4 +13,9 @@ los ejecutables, compilar, etc.
 que si das de alta un pelicula cono prototype solo podras tener ese objeto en tu aplicacion
 
 3. Mediante anotaciones solo podemos dar de alta objetos cuyas clases tengamos su codigo fuenta
-##
+
+## Ventajas de anotaciones
+
+1. Hace el codigo mas sencillo y más rapido de implentar.
+2. A diferencia de cuando trabajamos con XML NO hace falta hacer los setters y los getters
+de los atributos para inyectar los objetos. Spring inyecta los objetos a traves de un API en java que se llama reflection (metaprogramacion). Este API es con la que se hacen practicamente todos los frameworks java

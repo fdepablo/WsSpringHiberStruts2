@@ -2,8 +2,10 @@ package es.curso.presentacion;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import es.curso.cfg.ConfiguracionSpring;
 import es.curso.modelo.entidad.Director;
 import es.curso.modelo.entidad.Pelicula;
 
@@ -13,7 +15,7 @@ public class MainPrueba {
 	
 	public static void main(String[] args) {
 		context = 
-				new ClassPathXmlApplicationContext("beans.xml");
+				new AnnotationConfigApplicationContext(ConfiguracionSpring.class);
 		/*
 		DefaultListableBeanFactory dbf = 
 				context.getBean("defaultListableBeanFactory",DefaultListableBeanFactory.class);
@@ -23,9 +25,6 @@ public class MainPrueba {
 		
 		Director director1 = context.getBean("directorBean",Director.class);
 		System.out.println(director1);
-		
-		Director director2 = context.getBean("director",Director.class);
-		System.out.println(director2);
 		
 		Pelicula pelicula = context.getBean("pelicula",Pelicula.class);
 		System.out.println(pelicula);
