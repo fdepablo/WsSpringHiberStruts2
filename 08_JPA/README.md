@@ -91,7 +91,7 @@ Es muy importante considerar que los objetos EntityManager no son thread-safe. C
 
 ### Contexto de persistencia
 
-Una cuestión muy importante para entender el funcionamiento del entity manager es comprender su contexto de persistencia. Contiene la colección de entidades gestionadas por el entity manager que están conectadas y sincronizadas con la base de datos. Cuando el entity manager cierra una transacción, su contexto de persistencia se sincroniza automáticamente con la base de datos. Sin embargo, a pesar del importante papel que juega, el contexto de persistencia nunca es realmente visible a la aplicación. Siempre se accede a él indirectamente a través del entity manager y asumimos que está ahí cuando lo necesitamos.
+Una cuestión muy importante para entender el funcionamiento del entity manager es comprender su contexto de persistencia. Contiene la colección de entidades gestionadas por el entity manager que están conectadas y sincronizadas con la base de datos. Cuando el entity manager hace un commit() o flush(), su contexto de persistencia se sincroniza automáticamente con la base de datos. Sin embargo, a pesar del importante papel que juega, el contexto de persistencia nunca es realmente visible a la aplicación. Siempre se accede a él indirectamente a través del entity manager y asumimos que está ahí cuando lo necesitamos.
 
 Es también fundamental entender que el contexto de persistencia hace el papel de caché de las entidades que están realmente en la base de datos. Cuando actualizamos una instancia en el contexto de persistencia estamos actualizando una caché, una copia que sólo se hace persistente en la base de datos cuando el entity manager manda la información de las instancias en la base de datos.
 

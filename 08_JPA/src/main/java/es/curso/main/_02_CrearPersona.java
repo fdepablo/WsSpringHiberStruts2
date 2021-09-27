@@ -30,6 +30,7 @@ public class _02_CrearPersona {
 		//BBDD, pero ojo, es solo intencion, si queremos realmente persistirlo
 		//debemos decirselo.
 		em.persist(p1);
+		//em.persist(p1);//La segunda se ignora
 		
 		//Para sincronizar todos los objetos que tengo cacheados en memoria con la
 		//BBDD podemos ejecutar un commit()
