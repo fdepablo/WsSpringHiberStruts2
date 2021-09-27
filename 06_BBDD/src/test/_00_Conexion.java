@@ -20,12 +20,12 @@ public class _00_Conexion {
 		// los drivers de conexión (com.mysql.cj.jdbc.Driver). Notese que sigue siendo
 		// necesario cargar el jar con las clases de conexion en el classpath de java
 		/*try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado el driver para MySQL");
 			return;
 		}
-		
+	
 		System.out.println("Se ha cargado el Driver de MySQL");*/
 				
 		// Paso 1: Establecer conexión con la base de datos
