@@ -8,6 +8,7 @@ La idea de trabajar con entidades persistentes es intentar aplicar las ideas de 
 
 Una de las características principales de JPA es su simplicidad. JPA utiliza anotaciones y configuración por defecto, de forma que el desarrollador sólo tiene que especificar aquellas características que necesita que sean distintas de las de por defecto. 
 
+
 ## Implementaciones de JPA
 
 La más popular es <b>Hibernate</b>, que también se incluye en el servidor de aplicaciones JBoss. Otras implementaciones gratuitas son <b>Apache OpenJPA</b>, <b>ecliselink</b>. <b>MyBatis</b> y <b>Oracle TopLink</b>. La única implementación comercial de JPA existente en la actualidad es <b>CocoBase PURE POJO</b>.
@@ -96,6 +97,8 @@ Una cuestión muy importante para entender el funcionamiento del entity manager e
 Es también fundamental entender que el contexto de persistencia hace el papel de caché de las entidades que están realmente en la base de datos. Cuando actualizamos una instancia en el contexto de persistencia estamos actualizando una caché, una copia que sólo se hace persistente en la base de datos cuando el entity manager manda la información de las instancias en la base de datos.
 
 Es muy importante darse cuenta de la diferencia entre el contexto de persistencia y la base de datos propiamente dicha. La sincronización no se realiza hasta que el entity manager vuelca los cambios a la base de datos.
+
+El objetivo final de contexto de persistencia no es ahorrarnos queries, el objetivo es que haya solo un ejemplar por ID en la cache.
 
 ## Operaciones del entity manager
 
