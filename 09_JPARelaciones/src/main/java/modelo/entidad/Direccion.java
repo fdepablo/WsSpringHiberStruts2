@@ -34,5 +34,8 @@ public class Direccion {
 	@Override
 	public String toString() {
 		return "Direccion [tipoVia=" + tipoVia + ", nombreVia=" + nombreVia + ", ciudad=" + ciudad + "]";
-	}	
+	}
+
+	
+	
 }

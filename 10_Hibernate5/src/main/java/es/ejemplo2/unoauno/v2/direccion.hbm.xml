@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-mar-2015 21:15:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="es.ejemplo2.unoauno.v2.Direccion" table="DIRECCION">
+    	<!-- Aqui indicamos la columa de la propiedad foranea que va a afectar (el id) -->
+        <id name="id" column="id">
+            <generator class="foreign" >
+            	<param name="property">persona</param>
+            </generator>
+        </id>
+        <property name="domicilio" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <!-- Aquí indicamos la asociación entre clase y campo. Este campo no se almacena en base
+        de datos, se almacena la persona.id en el campo id anteriormente descrito -->
+		<one-to-one name="persona" class="beans.Persona" cascade="all"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="es.ejemplo5.muchosamuchos.Estudiante" table="estudiantes">
+      
+        <id name="id" column="id_estudiante">
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string" column="nombre"/>
+
+        <set name="conjuntoAsignaturas" table="estudiante_asignatura" cascade="all">
+            <key column="id_estudiante"/>
+            <many-to-many class="beans.Asignatura" column="id_asignatura"/>
+        </set>
+    </class>
+</hibernate-mapping>

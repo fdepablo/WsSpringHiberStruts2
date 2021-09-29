@@ -51,7 +51,7 @@ public class Cliente {
 	 * tabla especifica para Direccion.
 	 * Tambien debemos de anotar la clase Direccion de manera correcta
 	 */
-	@Embedded
+	@Embedded()
 	private Direccion direccion;
 
 	
@@ -99,7 +99,7 @@ public class Cliente {
 	//      Poniendo el mappedBy, podemos ahorrarnos que nos ponga tambien
 	//		una columna con el id de los datos bancarios en la tabla de clientes
 	
-	@OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private DatosBancarios datosBancarios;
 	
 	// Relacion de "uno a muchos"
@@ -111,7 +111,7 @@ public class Cliente {
 	// Este cascade hace que cuando demos de alta o baja un cliente, lo hagamos
 	// tambien de sus pedidos asociados. OJO! con esto porque podemos perder
 	// información de pedidos.
-	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL, fetch = FetchType.EAGER) 
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL, fetch = FetchType.LAZY) 
 	private List<Pedido> pedidos;
 	
 	// Relacion de "muchos a muchos"

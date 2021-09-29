@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="es.ejemplo2.unoauno.Persona" table="personas">
+      <id name="id" column="id_persona">
+          <generator class="foreign">
+              <param name="property">direccion</param>
+          </generator>
+      </id>
+      <property name="nombre" type="string" column="nombre"/>
+      <one-to-one name="direccion" cascade="all"/>
+  </class>
+</hibernate-mapping>

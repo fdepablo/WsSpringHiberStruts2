@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  
+  <class name="es.ejemplo3.unoamuchos.Autor" table="autores">
+      
+      <id name="id" column="id_autor">
+          <generator class="identity"/>
+      </id>
+      
+      <property name="nombre" type="string" column="nombre"/>
+      
+      <!-- <set name="conjuntoLibros" cascade="all" lazy="false"> -->
+      
+      <set name="conjuntoLibros" cascade="all">
+          <key column="id_autores"/>
+          <one-to-many class="beans.Libro"/>
+      </set>
+      
+  </class>
+  
+</hibernate-mapping>
