@@ -127,8 +127,13 @@ public class PruebaHibernateConsultas {
 
 		// Query que muestra todos los vendedores
 		TypedQuery<Vendedor> query = session.createQuery("FROM Vendedor v");
-		// Se puede poner tambien Vendedor a secas
+		//Si queremos paginar podemos establecer el numero maximo y desde donde
+		//queremos traernos los resultados
+		query.setFirstResult(0);//ojo, primer resultado es el 0 no el 1
+		query.setMaxResults(10);
+	
 		List<Vendedor> listaVendedores = query.getResultList();
+		
 		for (Vendedor vendedor : listaVendedores) {
 			System.out.println(vendedor);
 		}
