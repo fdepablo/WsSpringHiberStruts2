@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>12_Servlets</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>  
+  <!-- Este es el fichero donde podemos dar de alta los diferentes componentes
+  		que se utilizan en un proyecto web java. Son principalmente 3:
+  		
+  		Servlets -> Son objetos java con capacidad de procesar peticiones
+  		HTTP. Tomcat es el que los crea a partir de una clase, y hace su
+  		instancia unica (Singleton), y como tu no tienes control sobre el 
+  		ciclo de vida aplica el concepto IoC. Como de podemos decir a tomcat
+  		que instancie los objetos? 2 maneras en JEE:
+  			1- Dentro del fichero web.xml
+  			2. Mediante anotaciones (A partir de la version 3.0)
+  			
+  		Dentro de un MVC los servlets serían los controladores
+  		
+  		Filters -> Son objetos que estan pensados incialmente para mapear
+  		una serie de URLs. Se usan principalemnte para añadir logica a nuestra
+  		aplicacion de una manera transversal, basicamente cuando queremos
+  		que todo un rango de servlets tengan una logica que no queremos poner
+  		directamente en los servlets. Programacion orientada a aspectos
+  		
+  		Listener -> Programacion orientada a eventos, objetos que se ejecuta
+  		una logica cuando ocurren determinadas circunstacios
+  		
+  		Por defecto, la carpeta donde se debemos de poner nuestas vistas
+  		(HTML, JS, JSPs) es en la carpeta o "webapp" o "webcontent"
+  		OJO, las carptas WEB-INF y META-INF estan por defecto prohibidas
+  		acceder desde fuera del servidor
+   -->
+   
+   <servlet>
+   	<servlet-name>SegundoServlet</servlet-name>
+   	<servlet-class>es.curso.servlet.SegundoServlet</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+   		<servlet-name>SegundoServlet</servlet-name>
+   		<url-pattern>/SegundoServlet</url-pattern>
+   </servlet-mapping>
+   
+   <session-config>
+   		<session-timeout>30</session-timeout>
+   </session-config>
+</web-app>

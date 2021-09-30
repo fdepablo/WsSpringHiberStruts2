@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+	 <!-- 
+	 Configuración del fichero struts.xml
+	 Lo primero que haremos será configurar una constante que le indicará a Struts que nos 
+	 encontramos en la etapa de desarrollo, con esto generará más mensajes de salida para que 
+	 sepamos si estamos haciendo algo mal, y nos mostrará los errores de una forma más clara.
+	 Esto se nos mostrará tanto en la via web como por consola. 
+	 Para esto establecemos la constante "struts.devMode" con un valor de "true":
+	  -->
+    <constant name="struts.devMode" value="true" />
+ 
+ 	<!-- 
+ 	Otra constante útil que podemos definir es "struts.configuration.xml.reload". 
+ 	Esta constante permite que cuando modifiquemos los archivos de configuración de Struts 2 
+ 	no tengamos que volver a hacer un deploy de la aplicación para que los cambios tomen efecto:
+ 	 -->
+ 	<constant name="struts.configuration.xml.reload" value="true" />
+ 	 
+ 	<!--  	
+ 	Ahora definimos nuestro primer paquete, usando el elemento "<package>". 
+ 	Los paquetes nos permiten tener una configuración común para un conjunto de Actions. 
+ 	Por ejemplo, se pude definir el conjunto de interceptores que se aplican sobre ellos, 
+ 	resultados comunes, manejo de excepciones, etc.
+ 	
+ 	Cada uno de los paquetes que declaremos debe tener un nombre y extender de algún otro 
+ 	paquete. 
+ 	Opcionalmente también pueden tener un namespace, el cual es un fragmento que deberá 
+ 	será agregado a la URL de la petición para hacer referencia a ese paquete. 
+ 	Por ejemplo, si definimos un paquete con el namespace "/administracion", y dentro de 
+ 	este hay un Action cuyo nombre es "registro", para ejecutar ese Action deberemos hacer 
+ 	una petición a la siguiente URL:
+
+	http://servidor:puerto/aplicacion/administracion/registro.action
+	
+	Cuando extendemos de otro paquete heredamos su configuración y por defecto podemos
+	extender de "struts-default", que es el paquete base para la las aplicaciones de Struts 2. 
+	El nombre del paquete es arbitrario
+	
+ 	 -->
+    <package namespace="/" name="introduccion-struts" extends="struts-default">
+ 
+ 		<!-- 
+	 	Ahora mapearemos nuestro primer Action. Para esto usamos el elemento "<action>". 
+	 	Todas las acciones deben tener un nombre que debe ser único dentro de un namespace. 
+	 	Las acciones deben estar asociadas con una clase que será la que ejecute la acción 
+	 	adecuada. 
+	 	Si no indicamos una clase, Struts 2 usará una clase por default. Esta clase por default 
+	 	lo que hace es regresar siempre un resultado exitoso o "SUCCESS" de su ejecución. 
+ 	 	-->
+        <action name="index">
+        
+		    <!-- 
+		    Finalmente, debemos indicar el resultado de la ejecución de esta acción, 
+		    con el elemento "<result>". Una acción puede tener varios resultados, 
+		    dependiendo de la ejecución de la misma. 
+		    
+		    Cada uno de estos resultados debe tener un nombre al que se hará referencia 
+		    dentro de la acción para definir qué vista regresar al usuario.
+		     
+		    Se puede tener, por ejemplo, un resultado para el caso de una acción exitosa, 
+		    otro para una situación de error, otra para cuando el usuario no ha ingresado 
+		    todos los datos requeridos en un formulario, otra para cuando el usuario que 
+		    ingresa es un administrador, otro para cuando es un usuario anónimo, etc.
+		
+			Definimos que en el caso de una ejecución exitosa (success) se debe enviar al 
+			usuario a la página "index.jsp", de la siguiente forma. La ruta de la 
+			página debe indicarse a partir de la raíz del directorio web, que puede ser
+			por ejemplo webapp o webcontent
+			
+			<result name="success">/index.jsp</result>
+			
+			El nombre por default de un result es "success", así que podemos dejar la línea 
+			anterior de la siguiente manera:
+		     -->
+            <result>/index.jsp</result>
+            
+            <!-- 
+            Normalmente tratamos de usar los nombres de los result que se definen dentro de la 
+            interface Action ("success", "error", "input", etc.), para poder hacer uso de estas 
+            constantes cuando nos referimos a ellos, pero en realidad podemos darles el nombre 
+            que queramos (como "exito"o "fallo") y regresar estos valores en el método "execute".
+            
+            	public interface Action {
+				    public static final String SUCCESS = "success";
+				    public static final String NONE = "none";
+				    public static final String ERROR = "error";
+				    public static final String INPUT = "input";
+				    public static final String LOGIN = "login";
+				    
+				    public String execute() throws Exception;
+				}
+					
+            En otros ejemplos encontraremos más detalles sobre este tema.
+             -->
+        </action>
+ 
+    </package>
+ 
+</struts>
