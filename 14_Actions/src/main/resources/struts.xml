@@ -10,7 +10,20 @@
  	<constant name="struts.configuration.xml.reload" value="true" />
  	  	
     <package name="actions-struts" extends="struts-default"> 	
- 
+ 		<action name="inicio">
+ 			<result>/index.jsp</result>
+ 		</action>
+ 		
+ 		<action name="saludoAction" class="es.struts2.action.SaludoAction">
+ 			<result name="success">/principal.jsp</result>
+ 			<result name="error">/error.jsp</result>
+ 		</action>
+ 		
+ 		<!-- Si no poneis name, el de por defecto es "success" -->
+ 		<action name="loginAction" class="es.struts2.action.LoginAction">
+ 			<result>/usuarioRegistrado.jsp</result>
+ 			<result name="login">/login.jsp</result>
+ 		</action>
     </package>
  
 </struts>

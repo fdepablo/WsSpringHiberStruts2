@@ -8,15 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Bienvenidos a nuestra pagina!!</h1>
-	<!-- Struts pone por defecto estilos a sus etiquetas basandose en 
-		el atibuto "theme", que se establecen estilos y maneras de plasmar
-		el HTML
-	 -->
-	<s:form action="saludoAction">
+	<h1>Por favor registrese!!</h1>
+	<s:form action="loginAction">
 		<s:textfield name="nombre"></s:textfield>
-		<s:textfield name="numero"></s:textfield>
+		<s:textfield name="pw"></s:textfield>
 		<s:submit value="Pulse para enviar"></s:submit>
 	</s:form>
+	
+	<!-- Si la propiedad no se encuentra, no pinta nada -->
+	<h1 style="color:red"><s:property value="nombre" /><s:property value="mensaje" /></h1>
 </body>
 </html>
