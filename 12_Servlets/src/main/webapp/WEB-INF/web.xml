@@ -3,7 +3,7 @@
   <display-name>12_Servlets</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-  </welcome-file-list>  
+  </welcome-file-list> 
   <!-- Este es el fichero donde podemos dar de alta los diferentes componentes
   		que se utilizan en un proyecto web java. Son principalmente 3:
   		

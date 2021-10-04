@@ -24,7 +24,7 @@
 	  -->
 	  
 	  <%
-	  	//Todo esto es codio java
+	  	//Todo esto es codigo java
 	  	for(int i = 0; i <=10 ;i++){
 	  %>
 	  	<h2><%=i %></h2>

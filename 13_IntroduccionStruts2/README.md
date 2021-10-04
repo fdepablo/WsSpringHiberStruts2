@@ -121,8 +121,8 @@ El ultimo paso sería crear el fichero struts.xml dentro de la carpeta src/main/
 Ya podemos crear el fichero struts.xml dentro de la carpeta. Podemos usar como base el fichero struts.xml de este ejemplo.
 
 Arrancamos de nuevo y ponemos una de las siguientes direcciones:
-- http://localhost:8080/01_Introduccion/index.action
-- http://localhost:8080/01_Introduccion/index
+- http://localhost:8080/13_IntroduccionStruts2/inicio.action
+- http://localhost:8080/13_IntroduccionStruts2/inicio
 
 Podemos configurar un sistema de log como log4j. En este caso tenemos que crear el fichero log4j.xml en src/main/resources y meter las dependecias en el pom.xml
 

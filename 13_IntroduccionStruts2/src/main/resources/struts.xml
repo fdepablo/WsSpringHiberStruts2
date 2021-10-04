@@ -43,7 +43,7 @@
 	El nombre del paquete es arbitrario
 	
  	 -->
-    <package namespace="/" name="introduccion-struts" extends="struts-default">
+    <package name="introduccion-struts" extends="struts-default">
  
  		<!-- 
 	 	Ahora mapearemos nuestro primer Action. Para esto usamos el elemento "<action>". 
@@ -52,8 +52,11 @@
 	 	adecuada. 
 	 	Si no indicamos una clase, Struts 2 usará una clase por default. Esta clase por default 
 	 	lo que hace es regresar siempre un resultado exitoso o "SUCCESS" de su ejecución. 
+	 	
+	 	OJO, Struts.xml se copiara a la carpeta WEB-INF del TOMCAT, si los cambios que hacemos
+	 	no se propagan, limpiar el tomcat y el workdirectory
  	 	-->
-        <action name="index">
+        <action name="inicio">
         
 		    <!-- 
 		    Finalmente, debemos indicar el resultado de la ejecución de esta acción, 
@@ -79,7 +82,7 @@
 			anterior de la siguiente manera:
 		     -->
             <result>/index.jsp</result>
-            
+
             <!-- 
             Normalmente tratamos de usar los nombres de los result que se definen dentro de la 
             interface Action ("success", "error", "input", etc.), para poder hacer uso de estas 
