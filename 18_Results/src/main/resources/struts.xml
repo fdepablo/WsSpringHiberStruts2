@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+
+	<package name="results-struts" extends="struts-default">
+
+		<action name="dispatcher"
+			class="es.struts2.action.DispatcherAction">
+			<!-- Dentro de la etiqueta result podemos establecer el tipo de result 
+				que vamos a usar por medio del atributo "type" Además dentro de los result 
+				se pueden poner la etiqueta "param" para establecer propiedades de arranque. 
+				Cada uno de los tipos de results tienen siempre un parámetro por default. 
+				Si solo vamos a utilizar un parámetro en nuestro result, y ese parámetro 
+				es el parámetro por default entonces podemos omitir el elemento "<param>" 
+				y colocar directamente el valor dentro del elemento "<result>". En el caso 
+				del result de tipo "dispatcher" el parámetro por default es "location" es 
+				por eso que nunca hasta ahora hemos puesto "param" para referirnos al jsp 
+				de salida -->
+			<result name="success" type="dispatcher">
+				<param name="location">/index.jsp</param>
+			</result>
+		</action>
+
+		<!-- Result "redirect" -->
+		<action name="redirect"
+			class="es.struts2.action.RedirectAction">
+			<!-- Esta manera de dar el resultado funciona significativamente diferente 
+				a como funciona el dispatcher clasico. Básicamente lo que hace es mandar 
+				una peticion 300 al navegador para que vaya a la pagina index.jsp. Se puede 
+				observar como si hacemos un dispatcher normal, no cambia la URL y ADEMAS 
+				la request es la misma!!! Digamos que hace toda la petición sin salir del 
+				servidor. Pero ojo, si hacemos un REDIRECT, se manda una petición al navegador 
+				para que vaya a la pagina, y de esta manera la request NO es la misma y 
+				perderiamos todos los datos guardados en la request, y OJO! nos deja
+				la URL final (nos cambia la URL frente al dispatcher) -->
+			<result name="success" type="redirect">
+				<param name="location">/index.jsp</param>
+			</result>
+
+			<result name="google" type="redirect">
+				<param name="location">https://www.google.es</param>
+			</result>
+		</action>
+		
+		<!-- Result "redirect action" -->
+		<action name="redirect-action" class="es.struts2.action.RedirectActionAction">   
+			<!-- En este ejemplo vamos a hacer que el action RedirectActionAction
+				haga una petición al DispatcherAction
+				1. Con el parametro actionName, elegimos el action al que vamos
+				2. Podemos crear parametros de entrada como si fueran los que mandamos
+				a traves del formulario. Podemos ponerlos directamente o decirle
+				al objeto RedirectActionAction que nos lo inyecte
+				
+				Misma filosofia que con redirect, la request la perdemos al generarse
+				una nueva
+			 -->    
+			<result name="success" type="redirectAction">
+				<param name="actionName">dispatcher</param>
+				<param name="nombre">${nombreDelAction}</param>
+				<!-- 
+				<param name="nombre">Homer J. Simpson</param>
+				 -->
+			</result>     
+		</action>
+		
+		<!-- Result "chain" 
+			El atributo por defecto del result de las cadenas "chain" es la cadena
+			que vamos a invocar
+		-->
+		<action name="chain1" class="es.struts2.action.Chain1Action">
+			<result name="success" type="chain">chain2</result>
+		</action>
+		<action name="chain2" class="es.struts2.action.Chain2Action">
+			<result name="success" type="chain">chain3</result>
+		</action>
+		<action name="chain3" class="es.struts2.action.Chain3Action">
+			<result name="success" type="dispatcher">/index.jsp</result>
+		</action>
+	</package>
+
+</struts>
