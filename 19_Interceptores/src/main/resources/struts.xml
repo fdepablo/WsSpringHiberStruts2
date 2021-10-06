@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<package name="interceptores" extends="struts-default">
+
+		<interceptors>
+			<!-- Damos de alta nuestro interceptor creado -->
+			<interceptor name="interceptorLogin"
+				class="es.struts2.interceptores.InterceptorSeguridad" />
+
+			<!-- Creamos una pila en la que incluimos interceptorlogin, lo ponemos 
+				justo al principio de todo OJO! si no ponemos "defaultStack" estariamos definiendo 
+				que en nuestra pila de interceptores hay solo un interceptor (interceptorLogin) -->
+			<interceptor-stack name="seguridadStack">
+				<interceptor-ref name="interceptorLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- Asignamos por defecto nuestra pila de interceptores para todas las 
+			acciones definidas en el paquete, lo personalizaremos para cada action, pero 
+			por defecto todos los actions tendran esta pila de interceptores -->
+		<default-interceptor-ref name="seguridadStack" />
+
+		<!-- Podemos definir resultados globales que vayan a usar nuestra aplicacion -->
+		<global-results>
+			 <!-- 
+			 	Este global result lo utilizara ExceptionInterceptor, el primer interceptor 
+			 	de la pila por defecto
+			 	Siempre que ocurra una excepcion en nuestro programa se enviara un "error" 
+			 	por lo que podemos definir pantallas generales para mostrar nuestros errores.
+			  -->
+			<result name="error">/error.jsp</result>
+			 <!-- Este lo ponemos para nuestro interceptor 'interceptorLogin' -->
+			<result name="login">/login.jsp</result>
+		</global-results>
+
+		<!-- Configuración para el interceptor de excepciones: -->
+		<global-exception-mappings>
+			<!-- Podemos personalizar el tratamiento de excepciones en nuestra aplicacion 
+			de Struts2. 
+				Si queremos afinar el tratamiento de las excepciones ponemos más de un 
+				exception-mapping 
+			-->
+			<exception-mapping exception="java.lang.Exception" result="error" />
+			<!-- 
+			<exception-mapping exception="es.struts2.action.MiPropiaException" result="/mipaginaerror.jsp" />
+			 -->
+		</global-exception-mappings>
+
+
+		<!-- CONFIGURACION DE ACTIONS -->
+
+		<!-- Si no hubieramos definido un interceptor generico podiamos haberlo 
+				definido dentro de los actions, e incluirlo en pila por defecto 
+				<interceptor-ref name="interceptorLogin"/>
+				<interceptor-ref name="defaultStack"/> 
+			-->
+			
+		<action name="login" class="es.struts2.action.LoginAction">
+			
+			<!-- La accion de login no necesita seguridad, por lo que no usamos la pila 
+			"seguridadStack", usamos la de por defecto
+			-->
+			<interceptor-ref name="defaultStack" />		
+	
+			<result name="success" type="dispatcher">/WEB-INF/paginaSegura.jsp</result>
+			<result name="usrNoExiste">/login.jsp</result>
+		</action>		
+		
+		<!-- Es este caso si queremos que SeguroAction este logueado el usuario -->
+		<action name="seguroAction" class="es.struts2.action.SeguroAction">
+			<interceptor-ref name="timer" />
+			<interceptor-ref name="logger" />
+			<interceptor-ref name="seguridadStack" />	
+			<result name="success">/WEB-INF/paginaSegura.jsp</result>
+		</action>
+		
+		<action name="errorAction" class="es.struts2.action.ErrorAction">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">pruebaExceptionInterceptor.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
